@@ -65,7 +65,9 @@ class Signup extends Component <SignupProps,{}> {
                 </FormGroup>
                 <FormGroup>
                     <Label htmlFor="role">Role</Label>
-                    <Input name='role' value={role}  ></Input>
+                    <Input type="select" name='role' value={role} onChange={(e) => setRole(e.target.value)}  >
+                        <option value="member">membership</option>
+                    </Input>
                 </FormGroup>
                 <Button type="submit">Sign Up</Button>
 
