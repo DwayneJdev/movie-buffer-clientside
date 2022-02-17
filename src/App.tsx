@@ -1,6 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Fragment } from 'react';
 import './App.css';
 import Signup from './components/Signup';
+import Login from './components/Login';
+import Sitebar from './components/Navbar';
+import ReviewIndex from './components/Reviews/ReviewIndex';
 
 
 function App() {
@@ -8,10 +11,10 @@ function App() {
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
   const [sessionToken, setSessionToken] = useState<string | null>("");
-  const [role, setRole] = useState('member')
+  // const [role, setRole] = useState('member')
 
   useEffect(() => {
-    if (localStorage.getItem('token')){
+    if (localStorage.getItem('token')) {
       setSessionToken(localStorage.getItem('token'))
     }
   }, [])
@@ -21,20 +24,38 @@ function App() {
     setSessionToken('');
   }
 
-  const updateToken = (newToken:any) => {
+  const updateToken = (newToken: any) => {
     localStorage.setItem('token', newToken);
     setSessionToken(newToken);
     console.log(sessionToken);
-}
+  }
+
+  const protectedViews = () => {
+    return (sessionToken === localStorage.getItem('token'))
+  }
 
 
   return (
     <div className="App">
-      <Signup email={email} setEmail={setEmail}
-               username= {username} setUsername={setUsername}
-               password= {password} setPassword={setPassword} 
-               updateToken = {updateToken}
-               />
+      {protectedViews() ?
+        <Fragment>
+<ReviewIndex sessionToken = {sessionToken} />
+        </Fragment>
+        :
+        <Fragment>
+          <Signup email={email} setEmail={setEmail}
+            username={username} setUsername={setUsername}
+            password={password} setPassword={setPassword}
+            updateToken={updateToken}
+          />
+          <Login email={email} setEmail={setEmail}
+            username={username} setUsername={setUsername}
+            password={password} setPassword={setPassword}
+            updateToken={updateToken}
+          />
+        </Fragment>
+      }
+      <Sitebar clearToken={clearToken} />
     </div>
   );
 }

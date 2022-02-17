@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import {Form, FormGroup, Label, Input, Button} from 'reactstrap';
 import * as Yup from "yup";
 
-interface SignupProps {
+interface LoginProps {
 email: string,
 username: string,
 password: string,
@@ -10,18 +10,18 @@ setEmail: (e:string)=> void,
 setUsername: (e:string) => void,
 setPassword: (e:string) => void,
 updateToken: (newToken:any) => void
-
 }
+
     
 
 
 
                                 //props, state
-class Signup extends Component <SignupProps,{}> {  
+class Login extends Component <LoginProps,{}> {  
     constructor(props: any) {
         super(props)
         
-      
+    
 
         
     }
@@ -30,7 +30,7 @@ class Signup extends Component <SignupProps,{}> {
     handleSubmit = (e:any) => {
        e.preventDefault();
 
-       fetch("http://localhost:3000/user/signup", {
+       fetch("http://localhost:3000/user/login", {
            method: 'POST',
            headers: new Headers({
                'Content-Type': 'application/json'
@@ -66,7 +66,7 @@ class Signup extends Component <SignupProps,{}> {
                     <Input onChange={(e) => this.props.setPassword(e.target.value)} name="password" value={this.props.password} />
                 </FormGroup>
                
-                <Button type="submit">Sign Up</Button>
+                <Button type="submit">Login</Button>
 
                 </Form>
 
@@ -75,4 +75,4 @@ class Signup extends Component <SignupProps,{}> {
     }
 }
 
-export default Signup;
+export default Login
