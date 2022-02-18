@@ -1,15 +1,15 @@
-let APIURL = '';
+let APIURL = 'https://dkj-movie-buffer-server.herokuapp.com';
 
-switch(window.location.hostname) {
-    case 'localhost' || '127.0.0.1':
+// switch(window.location.hostname) {
+//     case 'localhost' || '127.0.0.1':
 
-    APIURL = 'http://localhost:3000';
+//     APIURL = 'http://localhost:3000';
 
-    break;
+//     break;
 
-    case 'https://dkj-movie-buffer-client.herokuapp.com':
+//     case 'https://dkj-movie-buffer-client.herokuapp.com':
 
-    APIURL = 'https://dkj-movie-buffer-server.herokuapp.com'
-}
+//     APIURL = 'https://dkj-movie-buffer-server.herokuapp.com'
+// }
 
 export default APIURL;

@@ -48,7 +48,7 @@ function App() {
 	"method": "GET",
 	"headers": {
 		"x-rapidapi-host": "movie-database-imdb-alternative.p.rapidapi.com",
-		"x-rapidapi-key": "8e08d96342mshcf9f4f1919a16acp127ecbjsn76357e6226e2"
+		"x-rapidapi-key": `${APIKEY}`
 	}
 })
 .then(res => res.json() )

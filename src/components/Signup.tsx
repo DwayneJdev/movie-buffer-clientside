@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import {Form, FormGroup, Label, Input, Button} from 'reactstrap';
 import * as Yup from "yup";
+import APIURL from "../helpers/environment";
 
 interface SignupProps {
 email: string,
@@ -30,7 +31,7 @@ class Signup extends Component <SignupProps,{}> {
     handleSubmit = (e:any) => {
        e.preventDefault();
 
-       fetch("http://localhost:3000/user/signup", {
+       fetch(`${APIURL}/user/signup`, {
            method: 'POST',
            headers: new Headers({
                'Content-Type': 'application/json'
