@@ -1,4 +1,3 @@
-import { title } from 'process';
 import React, { Component, useEffect } from 'react';
 import { Container, Row, Col } from 'reactstrap';
 import ReviewCreate from './ReviewCreate'
@@ -10,6 +9,8 @@ interface ReviewProps {
     sessionToken: string,
     title: string
     content: string
+    setTitle: (e: string) => void
+    setContent:(e: string) => void
 }
 
 class ReviewIndex extends Component<ReviewProps, {}> {
@@ -43,7 +44,8 @@ render(): React.ReactNode{
         <Container>
             <Row>
                 <Col>
-                    <ReviewCreate title={this.props.title} content={this.props.content} sessionToken={this.props.sessionToken} />
+                    <ReviewCreate title={this.props.title} content={this.props.content} sessionToken={this.props.sessionToken} setTitle={this.props.setTitle}
+                    setContent={this.props.setContent} fetchReviews={this.fetchReviews} />
                 </Col>
                 <Col>
 

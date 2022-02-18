@@ -50,7 +50,7 @@ class Login extends Component <LoginProps,{}> {
     render(): React.ReactNode {
         return (
             <div>
-                <h1>Sign Up</h1>
+                <h1>Login</h1>
                 <Form onSubmit={this.handleSubmit}>
                     
                 <FormGroup>
@@ -59,7 +59,7 @@ class Login extends Component <LoginProps,{}> {
                 </FormGroup>
                 <FormGroup>
                     <Label htmlFor="email">Email</Label>
-                    <Input onChange={(e) => this.props.setEmail(e.target.value)} name="email" value={this.props.username} />
+                    <Input onChange={(e) => this.props.setEmail(e.target.value)} name="email" value={this.props.email} />
                 </FormGroup>
                 <FormGroup>
                     <Label htmlFor="password">Password</Label>

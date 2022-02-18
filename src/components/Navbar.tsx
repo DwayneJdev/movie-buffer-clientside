@@ -14,10 +14,8 @@ interface NavbarProps{
 }
 
  interface NavbarState  {
-isOpen: Boolean,
+isOpen: boolean | undefined,
 setIsOpen:(e: boolean) => void ,
-
-
 }
 
 

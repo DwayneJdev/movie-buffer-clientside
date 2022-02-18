@@ -59,7 +59,7 @@ class Signup extends Component <SignupProps,{}> {
                 </FormGroup>
                 <FormGroup>
                     <Label htmlFor="email">Email</Label>
-                    <Input onChange={(e) => this.props.setEmail(e.target.value)} name="email" value={this.props.username} />
+                    <Input onChange={(e) => this.props.setEmail(e.target.value)} name="email" value={this.props.email} />
                 </FormGroup>
                 <FormGroup>
                     <Label htmlFor="password">Password</Label>

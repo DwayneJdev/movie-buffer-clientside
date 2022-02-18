@@ -12,11 +12,20 @@ function App() {
   const [password, setPassword] = useState("")
   const [sessionToken, setSessionToken] = useState<string | null>("");
   // const [role, setRole] = useState('member')
+  const [title, setTitle] = useState("deadpool")
+  const [year, setYear] = useState("")
+  const [imdbID, setImdbId] = useState("")
+  const [poster, setPoster] = useState("")
+  const [genre, setGenre] = useState("")
+  const [plot, setPlot] = useState("")
+  const [searchMovies, setSearchMovies] = useState([])
 
   useEffect(() => {
     if (localStorage.getItem('token')) {
       setSessionToken(localStorage.getItem('token'))
     }
+    console.log('HIT')
+    thirdPartyFetch()
   }, [])
 
   const clearToken = () => {
@@ -34,12 +43,63 @@ function App() {
     return (sessionToken === localStorage.getItem('token'))
   }
 
+  const thirdPartyFetch = () => {
+    fetch(`https://movie-database-imdb-alternative.p.rapidapi.com/?s=${title}&r=json`, {
+	"method": "GET",
+	"headers": {
+		"x-rapidapi-host": "movie-database-imdb-alternative.p.rapidapi.com",
+		"x-rapidapi-key": "8e08d96342mshcf9f4f1919a16acp127ecbjsn76357e6226e2"
+	}
+})
+.then(res => res.json() )
+.then(data => {
+  // const movieData = data.item;
+  // console.log(data)
+  setSearchMovies(data.Search);
+  testMap();
+
+  // movieData.map((item:any) => {
+  //   console.log(item)
+  //   const title = item.Title;
+  //   const year = item.Year;
+  //   const imdbID = item.imdbID;
+  //   const poster = item.Poster;
+  //   const genre = item.Genre;
+  //   const plot = item.Plot;
+  // })
+})
+.catch(err => {
+	console.error(err);
+});
+
+  }
+
+function testMap () {
+  console.log(searchMovies)
+
+  searchMovies.map((m:any) => {
+    console.log(m.Title)
+    return(
+      <>
+
+        <img src={m.Poster} alt={m.Title} />
+      </>
+    )
+  })
+ 
+  // let details = data;
+  // details.map( (item :any) => {
+  //   console.log(item)
+  // })
+}
+
 
   return (
     <div className="App">
       {protectedViews() ?
         <Fragment>
-<ReviewIndex sessionToken = {sessionToken} />
+{/* <ReviewIndex  /> */}
+<Sitebar clearToken={clearToken} />
         </Fragment>
         :
         <Fragment>
@@ -53,9 +113,13 @@ function App() {
             password={password} setPassword={setPassword}
             updateToken={updateToken}
           />
+          
         </Fragment>
       }
-      <Sitebar clearToken={clearToken} />
+      
+      {
+        testMap()
+      }
     </div>
   );
 }

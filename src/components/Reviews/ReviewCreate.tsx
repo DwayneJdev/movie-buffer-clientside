@@ -5,6 +5,10 @@ interface ReviewProps{
     title: string
     content: string
     sessionToken: string
+    setTitle: (e: string) => void
+    setContent:(e: string) => void
+    fetchReviews: () => void
+
 }
 
 class ReviewCreate extends Component <ReviewProps,{}> {
@@ -25,6 +29,12 @@ class ReviewCreate extends Component <ReviewProps,{}> {
                 'Authorization': this.props.sessionToken
             }),
             body: JSON.stringify({review:{title:this.props.title, content:this.props.content}})
+        }).then((res) => res.json())
+        .then((data) => {
+            console.log(data);
+            this.props.setTitle('');
+            this.props.setContent('');
+
         })
     }
 
