@@ -9,8 +9,9 @@ import {
     Nav,
     NavLink
 } from 'reactstrap';
-import {Route,Link, Switch} from 'react-router-dom';
+import { BrowserRouter as Router, Route,Link, Switch} from 'react-router-dom';
 import ReviewIndex from './Reviews/ReviewIndex'
+import {appProps} from '../App'
 
 
 interface NavbarProps{
@@ -19,7 +20,8 @@ interface NavbarProps{
     username: string,
     reviews: any[],
     setReviews: ( []) => void,
-    sessionToken: string,
+    sessionToken: appProps['sessionToken'],
+    //sessionToken: string | null,
     revTitle: string
     content: string
     setRevTitle: (e: string) => void
@@ -53,9 +55,10 @@ class Sitebar extends Component <NavbarProps, NavbarState> {
     }
 
     render(): React.ReactNode{
-
+// console.log(this.props.sessionToken)
         
         return(
+            <Router>
             <Navbar>
                 {/* <NavbarBrand href="/">Home</NavbarBrand> */}
             {/* <NavbarToggler onClick={this.toggle} /> */}
@@ -70,14 +73,15 @@ class Sitebar extends Component <NavbarProps, NavbarState> {
                     </NavItem>
                 {/* </Nav> */}
             {/* </Collapse> */}
+                
             <ul>
                 <li><Link to='/'>Home</Link></li>
                 <li><Link to='/Reviews'>Reviews</Link></li>
+                {/* <li><Link to=''></Link></li>
                 <li><Link to=''></Link></li>
                 <li><Link to=''></Link></li>
                 <li><Link to=''></Link></li>
-                <li><Link to=''></Link></li>
-                <li><Link to=''></Link></li>
+                <li><Link to=''></Link></li> */}
                
             </ul>
             <Switch>
@@ -89,6 +93,7 @@ class Sitebar extends Component <NavbarProps, NavbarState> {
             </Switch>
 
             </Navbar>
+                </Router>
         )
     }
 }

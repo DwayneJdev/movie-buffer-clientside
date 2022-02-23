@@ -6,12 +6,15 @@ import Sitebar from './components/Navbar';
 import APIURL from './helpers/environment';
 import ReviewIndex from './components/Reviews/ReviewIndex';
 
+export type appProps = {
+  sessionToken: string | null
+}
 
 function App() {
   const [email, setEmail] = useState("")
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
-  const [sessionToken, setSessionToken] = useState<string | null>("");
+  const [sessionToken, setSessionToken] = useState<string | null>('');
   // const [role, setRole] = useState('member')
   const [title, setTitle] = useState("deadpool")
   const [year, setYear] = useState("")
@@ -56,7 +59,8 @@ function App() {
 	"method": "GET",
 	"headers": {
 		"x-rapidapi-host": "movie-database-imdb-alternative.p.rapidapi.com",
-		"x-rapidapi-key": "8e08d96342mshcf9f4f1919a16acp127ecbjsn76357e6226e2"
+		"x-rapidapi-key": `${process.env.REACT_APP_API_KEY}`
+		
 	}
 })
 .then(res => res.json() )
@@ -110,8 +114,8 @@ function testMap () {
 <Sitebar clearToken={clearToken}
  username={username} reviews={reviews}
  setReviews={setReviews} sessionToken={sessionToken}
- title={revTitle} content={content}
- setTitle={setRevTitle} setContent={setContent} />
+ revTitle={revTitle} content={content}
+ setRevTitle={setRevTitle} setContent={setContent} />
         </Fragment>
         :
         <Fragment>
@@ -129,9 +133,9 @@ function testMap () {
         </Fragment>
       }
       
-      {/* {
+      {
         testMap()
-      } */}
+      }
     </div>
   );
 }

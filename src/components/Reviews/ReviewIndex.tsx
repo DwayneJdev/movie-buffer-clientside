@@ -1,23 +1,29 @@
 import React, { Component, useEffect } from 'react';
 import { Container, Row, Col } from 'reactstrap';
 import APIURL from '../../helpers/environment';
-import ReviewCreate from './ReviewCreate'
+import ReviewCreate from './ReviewCreate';
+
 
 interface ReviewProps {
     username: string,
     reviews: any[],
     setReviews: ( []) => void,
-    sessionToken: string,
+    sessionToken: string | null,
     revTitle: string
     content: string
     setRevTitle: (e: string) => void
     setContent:(e: string) => void
 }
+interface ReviewState {
+    sessionToken: string | null
+}
 
-class ReviewIndex extends Component<ReviewProps, {}> {
+class ReviewIndex extends Component<ReviewProps, ReviewState> {
     constructor(props: ReviewProps) {
         super(props)
-
+        // this.state ={
+        //     sessionToken: this.props.sessionToken
+        // }
     }
 
     fetchReviews = () => {
@@ -25,7 +31,7 @@ class ReviewIndex extends Component<ReviewProps, {}> {
             method: 'Get',
             headers: new Headers({
                 'Content-Type': 'application/json',
-                'Authorization': this.props.sessionToken
+                'Authorization': `Bearer ${this.props.sessionToken}`
             })
         }).then((res) => res.json())
             .then((data) => {
@@ -38,8 +44,8 @@ componentDidMount(){
     }
 
 render(): React.ReactNode{
-
-
+    console.log(this.state)
+    console.log(this.props.sessionToken);
 
     return (
         <Container>
