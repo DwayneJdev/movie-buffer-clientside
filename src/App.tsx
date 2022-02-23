@@ -124,11 +124,11 @@ function testMap () {
             password={password} setPassword={setPassword}
             updateToken={updateToken}
           />
-          <Login
+          {/* <Login
             username={username} setUsername={setUsername}
             password={password} setPassword={setPassword}
             updateToken={updateToken} sessionToken={sessionToken}
-          />
+          /> */}
           
         </Fragment>
       }
