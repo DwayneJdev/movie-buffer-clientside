@@ -7,6 +7,7 @@ interface LoginProps {
 // email: string,
 username: string,
 password: string,
+sessionToken: string | null,
 // setEmail: (e:string)=> void,
 setUsername: (e:string) => void,
 setPassword: (e:string) => void,
@@ -28,16 +29,17 @@ class Login extends Component <LoginProps,{}> {
     }
 
 
-    handleSubmit = (e:any) => {
+    handleLogin = (e:any) => {
        e.preventDefault();
 
        fetch(`${APIURL}/user/login`, {
            method: 'POST',
            headers: new Headers({
-               'Content-Type': 'application/json'
+               'Content-Type': 'application/json',
+               
            }),
-           body: JSON.stringify({user:{ username:this.props.username ,password: this.props.password, 
-                                    }}),
+           body: JSON.stringify({ username:this.props.username ,password: this.props.password, 
+                                    }),
        }).then(
            (response) => response.json()
        ).then((data) => { 
@@ -52,7 +54,7 @@ class Login extends Component <LoginProps,{}> {
         return (
             <div className="login">
                 <h1>Login</h1>
-                <Form onSubmit={this.handleSubmit}>
+                <Form onSubmit={this.handleLogin}>
                     
                 <FormGroup>
                     <Label htmlFor="username">Username</Label>

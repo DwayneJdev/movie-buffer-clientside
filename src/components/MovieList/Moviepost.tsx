@@ -24,7 +24,7 @@ class MoviePost extends Component <MoviePostProps,{}> {
             method: 'POST',
             headers: new Headers({
                 'Content-Type': 'application/json',
-                'Authorization': this.props.token
+                'Authorization': `Bearer ${this.props.token}`
             }),
             body: JSON.stringify({movie:{
                 title: this.props.title,

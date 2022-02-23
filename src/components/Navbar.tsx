@@ -26,6 +26,7 @@ interface NavbarProps{
     content: string
     setRevTitle: (e: string) => void
     setContent:(e: string) => void
+    id: string
 
 }
 
@@ -89,7 +90,7 @@ class Sitebar extends Component <NavbarProps, NavbarState> {
                 username={this.props.username} reviews={this.props.reviews}
                 setReviews={this.props.setReviews} sessionToken={this.props.sessionToken}
                 revTitle={this.props.revTitle} content={this.props.content}
-                setRevTitle={this.props.setRevTitle} setContent={this.props.setContent}/></Route>
+                setRevTitle={this.props.setRevTitle} setContent={this.props.setContent} id= {this.props.id}/></Route>
             </Switch>
 
             </Navbar>

@@ -27,7 +27,7 @@ function App() {
   const [revTitle, setRevTitle] = useState('')
   const [content, setContent] = useState('')
   const [otherSessionToken] = useState('')
-  const [] = useState('')
+  const [id] = useState('')
   const [] = useState('')
   const [] = useState('')
 
@@ -115,7 +115,7 @@ function testMap () {
  username={username} reviews={reviews}
  setReviews={setReviews} sessionToken={sessionToken}
  revTitle={revTitle} content={content}
- setRevTitle={setRevTitle} setContent={setContent} />
+ setRevTitle={setRevTitle} setContent={setContent} id={id} />
         </Fragment>
         :
         <Fragment>
@@ -124,18 +124,18 @@ function testMap () {
             password={password} setPassword={setPassword}
             updateToken={updateToken}
           />
-          {/* <Login
+          <Login
             username={username} setUsername={setUsername}
             password={password} setPassword={setPassword}
-            updateToken={updateToken}
-          /> */}
+            updateToken={updateToken} sessionToken={sessionToken}
+          />
           
         </Fragment>
       }
       
-      {
+      {/* {
         testMap()
-      }
+      } */}
     </div>
   );
 }
