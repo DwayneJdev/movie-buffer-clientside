@@ -3,6 +3,7 @@ import './App.css';
 import Signup from './components/Signup';
 import Login from './components/Login';
 import Sitebar from './components/Navbar';
+import APIURL from './helpers/environment';
 import ReviewIndex from './components/Reviews/ReviewIndex';
 
 
@@ -19,6 +20,13 @@ function App() {
   const [genre, setGenre] = useState("")
   const [plot, setPlot] = useState("")
   const [searchMovies, setSearchMovies] = useState([])
+  const [reviews, setReviews] = useState<any>([])
+  const [revTitle, setRevTitle] = useState('')
+  const [content, setContent] = useState('')
+  const [otherSessionToken] = useState('')
+  const [] = useState('')
+  const [] = useState('')
+  const [] = useState('')
 
   useEffect(() => {
     if (localStorage.getItem('token')) {
@@ -48,7 +56,7 @@ function App() {
 	"method": "GET",
 	"headers": {
 		"x-rapidapi-host": "movie-database-imdb-alternative.p.rapidapi.com",
-		"x-rapidapi-key": `${APIKEY}`
+		"x-rapidapi-key": "8e08d96342mshcf9f4f1919a16acp127ecbjsn76357e6226e2"
 	}
 })
 .then(res => res.json() )
@@ -99,7 +107,11 @@ function testMap () {
       {protectedViews() ?
         <Fragment>
 {/* <ReviewIndex  /> */}
-<Sitebar clearToken={clearToken} />
+<Sitebar clearToken={clearToken}
+ username={username} reviews={reviews}
+ setReviews={setReviews} sessionToken={sessionToken}
+ title={revTitle} content={content}
+ setTitle={setRevTitle} setContent={setContent} />
         </Fragment>
         :
         <Fragment>
@@ -108,18 +120,18 @@ function testMap () {
             password={password} setPassword={setPassword}
             updateToken={updateToken}
           />
-          <Login email={email} setEmail={setEmail}
+          {/* <Login
             username={username} setUsername={setUsername}
             password={password} setPassword={setPassword}
             updateToken={updateToken}
-          />
+          /> */}
           
         </Fragment>
       }
       
-      {
+      {/* {
         testMap()
-      }
+      } */}
     </div>
   );
 }

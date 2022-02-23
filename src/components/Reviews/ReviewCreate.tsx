@@ -1,5 +1,6 @@
 import React, {Component} from "react";
-import {Container, Row, Col} from 'reactstrap';
+import {Button, Form, FormGroup, Label, Input} from 'reactstrap';
+import APIURL from "../../helpers/environment";
 
 interface ReviewProps{
     title: string
@@ -22,7 +23,7 @@ class ReviewCreate extends Component <ReviewProps,{}> {
     handleSubmit = (e:any) => {
         e.preventDefaault();
 
-        fetch("http://localhost:3000/review/", {
+        fetch(`${APIURL}/review/`, {
             method: 'POST',
             headers: new Headers({
                 'Content-Type': 'application/json',
@@ -40,9 +41,11 @@ class ReviewCreate extends Component <ReviewProps,{}> {
 
     render(): React.ReactNode{
         return(
-            <div>
+            <Form onSubmit={this.handleSubmit}>
+                <Label htmlFor="title" />
+                <Input name="title" value={this.props.title} />
 
-            </div>
+            </Form>
         )
     }
 }

@@ -1,5 +1,6 @@
 import React, { Component, useEffect } from 'react';
 import { Container, Row, Col } from 'reactstrap';
+import APIURL from '../../helpers/environment';
 import ReviewCreate from './ReviewCreate'
 
 interface ReviewProps {
@@ -7,9 +8,9 @@ interface ReviewProps {
     reviews: any[],
     setReviews: ( []) => void,
     sessionToken: string,
-    title: string
+    revTitle: string
     content: string
-    setTitle: (e: string) => void
+    setRevTitle: (e: string) => void
     setContent:(e: string) => void
 }
 
@@ -20,7 +21,7 @@ class ReviewIndex extends Component<ReviewProps, {}> {
     }
 
     fetchReviews = () => {
-        fetch(`http://localhost:3000/review/:${this.props.username}`, {
+        fetch(`${APIURL}/review/:${this.props.username}`, {
             method: 'Get',
             headers: new Headers({
                 'Content-Type': 'application/json',
@@ -44,7 +45,7 @@ render(): React.ReactNode{
         <Container>
             <Row>
                 <Col>
-                    <ReviewCreate title={this.props.title} content={this.props.content} sessionToken={this.props.sessionToken} setTitle={this.props.setTitle}
+                    <ReviewCreate title={this.props.revTitle} content={this.props.content} sessionToken={this.props.sessionToken} setTitle={this.props.setRevTitle}
                     setContent={this.props.setContent} fetchReviews={this.fetchReviews} />
                 </Col>
                 <Col>

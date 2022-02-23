@@ -36,8 +36,8 @@ class Signup extends Component <SignupProps,{}> {
            headers: new Headers({
                'Content-Type': 'application/json'
            }),
-           body: JSON.stringify({user:{email:this.props.email, username:this.props.username ,password: this.props.password, 
-                                    }}),
+           body: JSON.stringify({email:this.props.email, username:this.props.username ,password: this.props.password, 
+                                    }),
        }).then(
            (response) => response.json()
        ).then((data) => { 
@@ -50,7 +50,7 @@ class Signup extends Component <SignupProps,{}> {
 
     render(): React.ReactNode {
         return (
-            <div>
+            <div className="signup">
                 <h1>Sign Up</h1>
                 <Form onSubmit={this.handleSubmit}>
                     

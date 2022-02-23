@@ -4,10 +4,10 @@ import * as Yup from "yup";
 import APIURL from '../helpers/environment'
 
 interface LoginProps {
-email: string,
+// email: string,
 username: string,
 password: string,
-setEmail: (e:string)=> void,
+// setEmail: (e:string)=> void,
 setUsername: (e:string) => void,
 setPassword: (e:string) => void,
 updateToken: (newToken:any) => void
@@ -36,7 +36,7 @@ class Login extends Component <LoginProps,{}> {
            headers: new Headers({
                'Content-Type': 'application/json'
            }),
-           body: JSON.stringify({user:{email:this.props.email, username:this.props.username ,password: this.props.password, 
+           body: JSON.stringify({user:{ username:this.props.username ,password: this.props.password, 
                                     }}),
        }).then(
            (response) => response.json()
@@ -50,7 +50,7 @@ class Login extends Component <LoginProps,{}> {
 
     render(): React.ReactNode {
         return (
-            <div>
+            <div className="login">
                 <h1>Login</h1>
                 <Form onSubmit={this.handleSubmit}>
                     
@@ -58,10 +58,10 @@ class Login extends Component <LoginProps,{}> {
                     <Label htmlFor="username">Username</Label>
                     <Input onChange={(e) => this.props.setUsername(e.target.value)} name="username" value={this.props.username} />
                 </FormGroup>
-                <FormGroup>
+                {/* <FormGroup>
                     <Label htmlFor="email">Email</Label>
                     <Input onChange={(e) => this.props.setEmail(e.target.value)} name="email" value={this.props.email} />
-                </FormGroup>
+                </FormGroup> */}
                 <FormGroup>
                     <Label htmlFor="password">Password</Label>
                     <Input onChange={(e) => this.props.setPassword(e.target.value)} name="password" value={this.props.password} />
