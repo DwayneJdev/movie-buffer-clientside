@@ -1,9 +1,9 @@
-//let APIURL = 'https://dkj-movie-buffer-server.herokuapp.com';
+let APIURL = 'https://dkj-movie-buffer-server.herokuapp.com';
 
 // switch(window.location.hostname) {
 //     case 'localhost' || '127.0.0.1':
 
- let     APIURL = 'http://localhost:3000';
+//  let     APIURL = 'http://localhost:3000';
 
 //     break;
 
