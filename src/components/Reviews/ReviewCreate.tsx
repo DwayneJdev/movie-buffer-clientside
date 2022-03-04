@@ -8,7 +8,7 @@ interface ReviewProps{
     sessionToken: string | null
     setRevTitle: (e: string) => void
     setContent:(e: string) => void
-    fetchReviews: () => void
+    // fetchReviews: () => void
 
 }
 
@@ -55,7 +55,7 @@ class ReviewCreate extends Component <ReviewProps,{}> {
                 <Input name="title" value={this.props.revTitle} onChange={(e:any) => this.props.setRevTitle(e.target.value)}/>
             </FormGroup>
             <FormGroup>
-                <Label htmlFor="title">review</Label>
+                <Label htmlFor="content">review</Label>
                 <Input name="content" value={this.props.content} onChange={(e:any) => this.props.setContent(e.target.value)}/>
             </FormGroup>
             <Button type="submit">Click to post review</Button>

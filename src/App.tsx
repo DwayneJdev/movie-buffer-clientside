@@ -24,12 +24,12 @@ function App() {
   const [plot, setPlot] = useState("")
   const [searchMovies, setSearchMovies] = useState([])
   const [reviews, setReviews] = useState<any>([])
-  const [revTitle, setRevTitle] = useState('')
+  const [revTitle, setRevTitle] = useState<any>('')
   const [content, setContent] = useState('')
   const [otherSessionToken] = useState('')
   const [id] = useState('')
-  const [] = useState('')
-  const [] = useState('')
+  const [reviewId] = useState<any>('')
+  const [reviewToUpdate] = useState({})
 
   useEffect(() => {
     if (localStorage.getItem('token')) {
@@ -115,7 +115,8 @@ function testMap () {
  username={username} reviews={reviews}
  setReviews={setReviews} sessionToken={sessionToken}
  revTitle={revTitle} content={content}
- setRevTitle={setRevTitle} setContent={setContent} id={id} />
+ setRevTitle={setRevTitle} setContent={setContent} id={id} reviewId={reviewId}
+ reviewToUpdate={reviewToUpdate} />
         </Fragment>
         :
         <Fragment>
@@ -124,11 +125,11 @@ function testMap () {
             password={password} setPassword={setPassword}
             updateToken={updateToken}
           />
-          {/* <Login
+          <Login
             username={username} setUsername={setUsername}
             password={password} setPassword={setPassword}
             updateToken={updateToken} sessionToken={sessionToken}
-          /> */}
+          />
           
         </Fragment>
       }

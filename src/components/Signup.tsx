@@ -28,7 +28,7 @@ class Signup extends Component <SignupProps,{}> {
     }
 
 
-    handleSubmit = (e:any) => {
+    handleSignup = (e:any) => {
        e.preventDefault();
 
        fetch(`${APIURL}/user/signup`, {
@@ -52,7 +52,7 @@ class Signup extends Component <SignupProps,{}> {
         return (
             <div className="signup">
                 <h1>Sign Up</h1>
-                <Form onSubmit={this.handleSubmit}>
+                <Form onSubmit={this.handleSignup}>
                     
                 <FormGroup>
                     <Label htmlFor="username">Username</Label>

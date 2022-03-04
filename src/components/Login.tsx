@@ -60,10 +60,7 @@ class Login extends Component <LoginProps,{}> {
                     <Label htmlFor="username">Username</Label>
                     <Input onChange={(e) => this.props.setUsername(e.target.value)} name="username" value={this.props.username} />
                 </FormGroup>
-                {/* <FormGroup>
-                    <Label htmlFor="email">Email</Label>
-                    <Input onChange={(e) => this.props.setEmail(e.target.value)} name="email" value={this.props.email} />
-                </FormGroup> */}
+                
                 <FormGroup>
                     <Label htmlFor="password">Password</Label>
                     <Input onChange={(e) => this.props.setPassword(e.target.value)} name="password" value={this.props.password} />
